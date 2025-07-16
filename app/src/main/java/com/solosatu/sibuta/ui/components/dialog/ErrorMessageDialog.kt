@@ -1,0 +1,87 @@
+package com.solosatu.sibuta.ui.components.dialog
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.RenderMode
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.solosatu.sibuta.ui.theme.SIBUTATheme
+import com.solosatu.sibuta.R
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ErrorMessageDialog(
+    isVisible: Boolean = false,
+    title: String = "Title",
+    description: String = "Description",
+    onDismiss: () -> Unit = {}
+) {
+    if (isVisible) {
+        AlertDialog(onDismissRequest = { onDismiss() }) {
+            Surface(
+                shape = RoundedCornerShape(20.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(vertical = 40.dp, horizontal = 20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    val composition by rememberLottieComposition(
+                        spec = LottieCompositionSpec.RawRes(
+                            R.raw.lottie_failed
+                        )
+                    )
+                    LottieAnimation(
+                        modifier = Modifier
+                            .requiredSize(48.dp)
+                            .scale(2f),
+                        composition = composition,
+                        renderMode = RenderMode.AUTOMATIC,
+                        iterations = LottieConstants.IterateForever,
+                    )
+                    Spacer(modifier = Modifier.height(40.dp))
+                    Text(
+                        text = title,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = description,
+                        fontSize = 14.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        }
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    SIBUTATheme {
+        ErrorMessageDialog(isVisible = true)
+    }
+}

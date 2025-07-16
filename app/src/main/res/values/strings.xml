@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SIBUTA</string>
+
+    <string name="notification_channel_id">sibuta_channel_id</string>
+    <string name="notification_channel_name">SIBUTA</string>
+
+    <string name="preference_login">AppLoginPreference</string>
+    <string name="preference_login_user">AppLoginPreferenceUser</string>
+    <string name="preference_login_token">AppLoginPreferenceToken</string>
+    <string name="preference_device_token">AppDevicePreferenceToken</string>
+
+    <string name="preference_app">AppDataPreference</string>
+    <string name="preference_intro">AppDataPreferenceIntro</string>
+</resources>

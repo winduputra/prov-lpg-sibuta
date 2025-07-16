@@ -1,2 +1,4 @@
-# prov-lpg-sibuta
-Sistem Buku Tamu di Biro PBJ Provinsi Lampung
+# SIBUTA MOBILE
+
+1. Open file in Android Studio
+2. Follow the instructions on the Android Studio
